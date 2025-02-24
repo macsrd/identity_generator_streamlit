@@ -81,7 +81,7 @@ def generate_identity(gender, include_secondname):
     
     return name, probability, pesel
 
-# Function displaying identity in GUI (Tkinter)
+""" # Function displaying identity in GUI (Tkinter)
 def display_identity():
     gender = gender_var.get()
     include_secondname = include_secondname_var.get() == 1
@@ -116,4 +116,4 @@ result_label = ttk.Label(root, text="")
 result_label.grid(column=0, row=3, columnspan=3, padx=10, pady=10)
 
 # Starting GUI loop
-root.mainloop()
+root.mainloop() """
