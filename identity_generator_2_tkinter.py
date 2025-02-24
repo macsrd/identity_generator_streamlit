@@ -35,7 +35,10 @@ def load_data(firstname_file, lastname_file, secondname_file):
 
 # Function to generate random fullnames and probability
 def generate_name_with_probability(firstnames_df, lastnames_df, secondnames_df=None, include_secondname=False):
-
+    
+    if firstnames_df is None or lastnames_df is None or (include_secondname and secondnames_df is None):
+        raise ValueError("One or more required DataFrames are None")
+    
     firstname = np.random.choice(firstnames_df.iloc[:,0], p=firstnames_df['probability'])
     lastname = np.random.choice(lastnames_df.iloc[:,0], p=lastnames_df['probability'])
 
