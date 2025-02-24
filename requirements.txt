@@ -1,4 +1,1 @@
 random_pesel
-pandas
-numpy
-random
