@@ -35,6 +35,11 @@ def load_data(firstname_file, lastname_file, secondname_file):
 
 # Function to generate random fullnames and probability
 def generate_name_with_probability(firstnames_df, lastnames_df, secondnames_df=None, include_secondname=False):
+
+    print(f"firstnames_df type: {type(firstnames_df)}")
+    print(f"lastnames_df type: {type(lastnames_df)}")
+    print(f"secondnames_df type: {type(secondnames_df)}")
+    
     firstname = np.random.choice(firstnames_df.iloc[:,0], p=firstnames_df['probability'])
     lastname = np.random.choice(lastnames_df.iloc[:,0], p=lastnames_df['probability'])
 
@@ -56,10 +61,10 @@ def generate_name_with_probability(firstnames_df, lastnames_df, secondnames_df=N
 
 # Loading files
 female_firstnames_df, female_lastnames_df, female_secondnames_df = load_data(
-    'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/firstname_female.xlsx', 'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/lastname_female.xlsx', 'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/secondname_female.csv'
+    'db/firstname_female.xlsx', 'db/lastname_female.xlsx', 'db/secondname_female.csv'
 )
 male_firstnames_df, male_lastnames_df, male_secondnames_df = load_data(
-    'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/firstname_male.xlsx', 'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/lastname_male.xlsx', 'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/secondname_male.csv'
+    'db/firstname_male.xlsx', 'db/lastname_male.xlsx', 'db/secondname_male.csv'
 )
 
 # Checking if files were loaded correctly
