@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import random
-import tkinter as tk
-from tkinter import ttk
+""" import tkinter as tk
+from tkinter import ttk """
 from random_pesel import RandomPESEL
 
 
