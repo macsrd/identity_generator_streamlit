@@ -63,7 +63,7 @@ female_firstnames_df, female_lastnames_df, female_secondnames_df = load_data(
     'db/firstname_female.xlsx', 'db/lastname_female.xlsx', 'db/secondname_female.csv'
 )
 male_firstnames_df, male_lastnames_df, male_secondnames_df = load_data(
-    'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/firstname_male.xlsx', 'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/lastname_male.xlsx', 'https://github.com/macsrd/identity_generator_streamlit/blob/main/db/secondname_male.csv'
+    'db/firstname_male.xlsx', 'db/lastname_male.xlsx', 'db/secondname_male.csv'
 )
 
 # Checking if files were loaded correctly
