@@ -59,18 +59,22 @@ def generate_name_with_probability(firstnames_df, lastnames_df, secondnames_df=N
     return fullname, combined_prob
 
 # Loading files
+
 female_firstnames_df, female_lastnames_df, female_secondnames_df = load_data(
     'db/firstname_female.xlsx', 'db/lastname_female.xlsx', 'db/secondname_female.csv'
 )
+if female_firstnames_df is None or female_lastnames_df is None:
+    print("Failed to load female names data.")
+else:
+    print("Female names data loaded successfully")
+
 male_firstnames_df, male_lastnames_df, male_secondnames_df = load_data(
     'db/firstname_male.xlsx', 'db/lastname_male.xlsx', 'db/secondname_male.csv'
 )
-
-# Checking if files were loaded correctly
-if female_firstnames_df is None or female_lastnames_df is None:
-    print("Failed to load female names data.")
 if male_firstnames_df is None or male_lastnames_df is None:
     print("Failed to load male names data.")
+else:
+    print("Male names data loaded successfully")    
 
 # Function generating identity basing on gender and optional secondname
 def generate_identity(gender, include_secondname):
