@@ -14,6 +14,10 @@ def load_data(firstname_file, lastname_file, secondname_file):
         lastnames_df = pd.read_excel(lastname_file)
         secondnames_df = pd.read_csv(secondname_file) if secondname_file else None
         print("Files loaded successfully")
+        print(f"Firstnames shape: {firstnames_df.shape}")
+        print(f"Lastnames shape: {lastnames_df.shape}")
+        if secondnames_df is not None:
+            print(f"Secondnames shape: {secondnames_df.shape}")
     except Exception as e:
         print(f"Error reading files: {e}")
         return None, None, None
