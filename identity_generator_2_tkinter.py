@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import random
-""" import tkinter as tk
-from tkinter import ttk """
 from random_pesel import RandomPESEL
 
 
@@ -93,40 +91,3 @@ def generate_identity(gender, include_secondname):
         raise ValueError("Gender must be 'male' or 'female'")
     
     return name, probability, pesel
-
-""" # Function displaying identity in GUI (Tkinter)
-def display_identity():
-    gender = gender_var.get()
-    include_secondname = include_secondname_var.get() == 1
-    try:
-        random_name, probability, pesel = generate_identity(gender, include_secondname)
-        result_label.config(text=f"Generated Name: {random_name}\nProbability: {probability * 100:.6f}%\nPESEL: {pesel}")
-    except ValueError as e:
-        result_label.config(text=f"Error: {e}")
-    except TypeError as e:
-        result_label.config(text=f"Error generating name: {e}")
-
-# Creating Tkinter GUI
-root = tk.Tk()
-root.title("Identity Generator")
-
-# Selecting Gender
-gender_var = tk.StringVar(value="male")
-ttk.Label(root, text="Select Gender:").grid(column=0, row=0, padx=10, pady=10)
-ttk.Radiobutton(root, text="Male", variable=gender_var, value="male").grid(column=1, row=0, padx=10, pady=10)
-ttk.Radiobutton(root, text="Female", variable=gender_var, value="female").grid(column=2, row=0, padx=10, pady=10)
-
-# Including secondname
-include_secondname_var = tk.IntVar(value=0)
-ttk.Checkbutton(root, text="Include Second Name", variable=include_secondname_var).grid(column=0, row=1, columnspan=3, padx=10, pady=10)
-
-# Defining Generate button
-generate_button = ttk.Button(root, text="Generate Identity", command=display_identity)
-generate_button.grid(column=0, row=2, columnspan=3, padx=10, pady=10)
-
-# Displaying results
-result_label = ttk.Label(root, text="")
-result_label.grid(column=0, row=3, columnspan=3, padx=10, pady=10)
-
-# Starting GUI loop
-root.mainloop() """
