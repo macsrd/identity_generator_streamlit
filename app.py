@@ -1,5 +1,5 @@
 import streamlit as st
-from identity_generator_2_tkinter import generate_identity  # Import your function
+from identity_generator_2_tkinter import *  # Import your function
 
 st.title("Polish Identity Generator")
 
