@@ -9,5 +9,11 @@ include_secondname = st.checkbox("Include Surname")
 
 # Generate identity on button click
 if st.button("Generate Identity"):
-    identity = generate_identity(gender, include_secondname)
-    st.success(f"Generated Identity: **{identity}**")
+    firstname, secondname, lastname, pesel, probability = generate_identity(gender, include_secondname)
+    
+    st.write("**Firstname:**", firstname)
+    if include_secondname:
+        st.write("**Secondname:**", secondname)
+    st.write("**Lastname:**", lastname)
+    st.write("**PESEL:**", pesel)
+    st.write("**Probability:**", probability)

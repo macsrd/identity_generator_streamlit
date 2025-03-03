@@ -90,4 +90,10 @@ def generate_identity(gender, include_secondname):
     else:
         raise ValueError("Gender must be 'male' or 'female'")
     
-    return name, probability, pesel
+    if include_secondname:
+        firstname, secondname, lastname = name.split()
+    else:
+        firstname, lastname = name.split()
+        secondname = None
+    
+    return firstname, secondname, lastname, pesel, probability
