@@ -90,10 +90,13 @@ def generate_identity(gender, include_secondname):
     else:
         raise ValueError("Gender must be 'male' or 'female'")
     
-    if include_secondname:
-        firstname, secondname, lastname = name.split()
-    else:
-        firstname, lastname = name.split()
+    name_parts = name.split()
+    if include_secondname and len(name_parts) == 3:
+        firstname, secondname, lastname = name_parts
+    elif not include_secondname and len(name_parts) == 2:
+        firstname, lastname = name_parts
         secondname = None
+    else:
+        raise ValueError("Unexpected name format")
     
     return firstname, secondname, lastname, pesel, probability
