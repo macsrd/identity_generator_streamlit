@@ -90,7 +90,10 @@ def generate_identity(gender, include_secondname):
     else:
         raise ValueError("Gender must be 'male' or 'female'")
     
+    print(f"Generated name: {name}")
     name_parts = name.split()
+    print(f"Name parts: {name_parts}")
+    
     if include_secondname and len(name_parts) == 3:
         firstname, secondname, lastname = name_parts
     elif not include_secondname and len(name_parts) == 2:
