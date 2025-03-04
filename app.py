@@ -37,7 +37,7 @@ if st.button("Generate Identity"):
         # firstname, secondname, lastname, pesel, probability = generate_identity(gender, include_secondname)
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
         
-        st.markdown,f"Firstname: {firstname}")
+        st.markdown(f"Firstname: {firstname}")
         if include_secondname and secondname:
             st.markdown(f"Secondname: {secondname}")
         st.markdown(f"Lastname: {lastname}")
