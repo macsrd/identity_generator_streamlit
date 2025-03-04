@@ -39,8 +39,6 @@ include_secondname = st.checkbox("Include Secondname")
 if st.button("Generate Identity"):
     try:
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
-        
-        # Store generated values in session state
         st.session_state.identity = {
             "Firstname": firstname,
             "Lastname": lastname,
@@ -51,14 +49,9 @@ if st.button("Generate Identity"):
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
 
-# Display and create copy buttons for stored values
 if "identity" in st.session_state:
     for key, value in st.session_state.identity.items():
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            st.markdown(f"**{key}:**")
-        with col2:
-            st_copy_to_clipboard(value, value)  # Use the value as the button text
+        st.markdown(f"**{key}:**")
+        st_copy_to_clipboard(value, value)
 
-# Add a note about copying
 st.info("Click on the values to copy them to your clipboard.")
