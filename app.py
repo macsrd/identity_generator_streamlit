@@ -18,10 +18,10 @@ st.markdown(
 )
 
 st.title("Polish Identity Generator")
-"""
-st.header("Generate a Polish Identity")
-st.subheader("Please select the options below:")
-"""
+
+#st.header("Generate a Polish Identity")
+#st.subheader("Please select the options below:")
+
 
 # User selection
 gender = st.radio("Select Gender:", ["Male", "Female"])
