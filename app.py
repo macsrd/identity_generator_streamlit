@@ -11,13 +11,13 @@ include_secondname = st.checkbox("Include Surname")
 if st.button("Generate Identity"):
     try:
        # firstname, secondname, lastname, pesel, probability = generate_identity(gender, include_secondname)
-        firstname, secondname, lastname = generate_identity(gender, include_secondname)
+        firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
        
         st.write("**Firstname:**", firstname)
         if include_secondname and secondname:
             st.write("**Secondname:**", secondname)
         st.write("**Lastname:**", lastname)
-#        st.write("**PESEL:**", pesel)
+        st.write("**PESEL:**", pesel)
 #        st.write("**Probability:**", probability)
     except ValueError as e:
         st.error(f"Error generating identity: {e}")

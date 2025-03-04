@@ -102,5 +102,5 @@ def generate_identity(gender, include_secondname):
     else:
         raise ValueError("Unexpected name format")
     
-    return firstname, secondname, lastname    
+    return firstname, secondname, lastname, pesel
 #    return firstname, secondname, lastname, pesel, probability
