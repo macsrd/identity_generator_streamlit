@@ -24,12 +24,19 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# JavaScript for copying text to clipboard
+# JavaScript for copying text to clipboard and showing a message
 copy_js = """
 <script>
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
-        alert("Copied to clipboard: " + text);
+        var message = document.createElement("div");
+        message.innerText = "Copied to clipboard: " + text;
+        message.style.color = "green";
+        message.style.fontWeight = "bold";
+        document.body.appendChild(message);
+        setTimeout(function() {
+            document.body.removeChild(message);
+        }, 2000);
     }, function(err) {
         console.error("Could not copy text: ", err);
     });
