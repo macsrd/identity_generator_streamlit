@@ -3,8 +3,6 @@ import numpy as np
 import random
 from random_pesel import RandomPESEL
 
-
-
 # Function to load data from files and calculate probability
 def load_data(firstname_file, lastname_file, secondname_file):
     try:
@@ -47,13 +45,13 @@ def generate_name_with_probability(firstnames_df, lastnames_df, secondnames_df=N
 
     if include_secondname and secondnames_df is not None:
         secondname = np.random.choice(secondnames_df.iloc[:, 0], p=secondnames_df['probability'])
+        while secondname == firstname:
+            secondname = np.random.choice(secondnames_df.iloc[:, 0], p=secondnames_df['probability'])
         fullname = f"{firstname} {secondname} {lastname}"
         secondname_prob = secondnames_df[secondnames_df.iloc[:, 0] == secondname]['probability'].values[0]
         combined_prob = firstnames_df[firstnames_df.iloc[:, 0] == firstname]['probability'].values[0] * \
                         secondname_prob * \
                         lastnames_df[lastnames_df.iloc[:, 0] == lastname]['probability'].values[0]
-
-    
     else:
         fullname = f"{firstname} {lastname}"
         combined_prob = firstnames_df[firstnames_df.iloc[:, 0] == firstname]['probability'].values[0] * \
@@ -62,7 +60,6 @@ def generate_name_with_probability(firstnames_df, lastnames_df, secondnames_df=N
     return fullname, combined_prob
 
 # Loading files
-
 female_firstnames_df, female_lastnames_df, female_secondnames_df = load_data(
     'db/firstname_female.xlsx', 'db/lastname_female.xlsx', 'db/secondname_female.csv'
 )
