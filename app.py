@@ -39,9 +39,9 @@ if st.button("Generate Identity"):
         
         st.markdown(f"**Firstname:** :blue-background[{firstname}]")
         if include_secondname and secondname:
-            st.markdown(f"**Secondname:** {secondname}")
-        st.markdown(f"**Lastname:** {lastname}")
-        st.markdown(f"**PESEL:** {pesel}")
+            st.markdown(f"**Secondname:** :blue-background[{secondname}]")
+        st.markdown(f"**Lastname:** :blue-background[{lastname}]")
+        st.markdown(f"**PESEL:** :blue-background[{pesel}]")
         # st.markdown(f"<div class='identity-info'>**Probability:** {probability}</div>")
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
