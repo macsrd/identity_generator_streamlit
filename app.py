@@ -39,18 +39,18 @@ include_secondname = st.checkbox("Include Secondname")
 if st.button("Generate Identity"):
     try:
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
-        st.session_state.identity = {
-            "Firstname": firstname,
-            "Lastname": lastname,
-            "PESEL": pesel
-        }
+        st.session_state.identity = [
+            ("Firstname", firstname),
+            ("Lastname", lastname),
+            ("PESEL", pesel)
+        ]
         if include_secondname and secondname:
-            st.session_state.identity["Secondname"] = secondname
+            st.session_state.identity.insert(1, ("Secondname", secondname))
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
 
 if "identity" in st.session_state:
-    for key, value in st.session_state.identity.items():
+    for key, value in st.session_state.identity:
         st.markdown(f"**{key}:**")
         st_copy_to_clipboard(value, value)
 
