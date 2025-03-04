@@ -3,10 +3,17 @@ from identity_generator_2_tkinter import *  # Import your function
 
 # Add this JavaScript function
 st.markdown("""
+<div id="copyNotification" style="display:none; position: fixed; bottom: 20px; right: 20px; background-color: #4CAF50; color: white; padding: 16px; border-radius: 4px;">
+Text copied to clipboard!
+</div>
+
 <script>
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
         console.log('Copying to clipboard was successful!');
+        var notification = document.getElementById("copyNotification");
+        notification.style.display = "block";
+        setTimeout(function(){ notification.style.display = "none"; }, 2000);
     }, function(err) {
         console.error('Could not copy text: ', err);
     });
