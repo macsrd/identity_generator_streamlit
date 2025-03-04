@@ -37,7 +37,7 @@ if st.button("Generate Identity"):
         # firstname, secondname, lastname, pesel, probability = generate_identity(gender, include_secondname)
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
         
-        st.text(f"Firstname: {firstname}")
+        st.text(f"<b>Firstname:</b> {firstname}")
         if include_secondname and secondname:
             st.text(f"Secondname: {secondname}")
         st.text(f"Lastname: {lastname}")
