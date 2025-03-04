@@ -17,19 +17,33 @@ st.markdown(
         font-weight: bold;
         color: #333;
         margin-bottom: 10px;
+        cursor: pointer;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# JavaScript for copying text to clipboard
+copy_js = """
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert("Copied to clipboard: " + text);
+    }, function(err) {
+        console.error("Could not copy text: ", err);
+    });
+}
+</script>
+"""
+
+st.markdown(copy_js, unsafe_allow_html=True)
+
 st.title("Polish Identity Generator")
-st.header("Generate a Polish Identity")
-st.subheader("Please select the options below:")
 
 # User selection
 gender = st.radio("Select Gender:", ["Male", "Female"])
-include_secondname = st.checkbox("Include Surname")
+include_secondname = st.checkbox("Include Secondname")
 
 # Generate identity on button click
 if st.button("Generate Identity"):
@@ -37,11 +51,11 @@ if st.button("Generate Identity"):
         # firstname, secondname, lastname, pesel, probability = generate_identity(gender, include_secondname)
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
         
-        st.markdown(f"**Firstname:** :blue-background[{firstname}]")
+        st.markdown(f"<div class='identity-info' onclick='copyToClipboard(\"{firstname}\")'>**Firstname:** {firstname}</div>", unsafe_allow_html=True)
         if include_secondname and secondname:
-            st.markdown(f"**Secondname:** :blue-background[{secondname}]")
-        st.markdown(f"**Lastname:** :blue-background[{lastname}]")
-        st.markdown(f"**PESEL:** :blue-background[{pesel}]")
-        # st.markdown(f"<div class='identity-info'>**Probability:** {probability}</div>")
+            st.markdown(f"<div class='identity-info' onclick='copyToClipboard(\"{secondname}\")'>**Secondname:** {secondname}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='identity-info' onclick='copyToClipboard(\"{lastname}\")'>**Lastname:** {lastname}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='identity-info' onclick='copyToClipboard(\"{pesel}\")'>**PESEL:** {pesel}</div>", unsafe_allow_html=True)
+        # st.markdown(f"<div class='identity-info' onclick='copyToClipboard(\"{probability}\")'>**Probability:** {probability}</div>", unsafe_allow_html=True)
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
