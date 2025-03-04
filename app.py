@@ -42,7 +42,6 @@ if st.button("Generate Identity"):
             st.markdown(f"<div class='identity-info'>Secondname: {secondname}</div>", unsafe_allow_html=True)
         st.markdown(f"<div class='identity-info'>Lastname: {lastname}</div>", unsafe_allow_html=True)
         st.markdown(f"<div class='identity-info'>PESEL: {pesel}</div>", unsafe_allow_html=True)
-        st.text_area(label ="",value=f"PESEL: {pesel}", height =100)
         # st.markdown(f"<div class='identity-info'>**Probability:** {probability}</div>", unsafe_allow_html=True)
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
