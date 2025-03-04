@@ -28,18 +28,15 @@ st.markdown(
 copy_js = """
 <script>
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-        var message = document.createElement("div");
-        message.innerText = "Copied to clipboard: " + text;
-        message.style.color = "green";
-        message.style.fontWeight = "bold";
-        document.body.appendChild(message);
-        setTimeout(function() {
-            document.body.removeChild(message);
-        }, 2000);
-    }, function(err) {
-        console.error("Could not copy text: ", err);
-    });
+    var tempInput = document.createElement("input");
+    tempInput.style.position = "absolute";
+    tempInput.style.left = "-9999px";
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Copied to clipboard: " + text);
 }
 </script>
 """
