@@ -12,18 +12,17 @@ st.markdown(
     .stButton>button {
         background-color: #4CAF50;
         color: white;
+        width: 100%;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .identity-info {
         font-size: 18px;
         font-weight: bold;
         color: #333;
         margin-bottom: 10px;
-    }
-    .copyable {
-        background-color: lightblue;
-        cursor: pointer;
-        padding: 2px 5px;
-        border-radius: 3px;
     }
     </style>
     """,
@@ -59,7 +58,7 @@ if "identity" in st.session_state:
         with col1:
             st.markdown(f"**{key}:**")
         with col2:
-            st_copy_to_clipboard(value, f"Copy {key}")
+            st_copy_to_clipboard(value, value)  # Use the value as the button text
 
 # Add a note about copying
-st.info("Click on the 'Copy' buttons to copy the values to your clipboard.")
+st.info("Click on the values to copy them to your clipboard.")
