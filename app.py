@@ -37,11 +37,11 @@ if st.button("Generate Identity"):
         # firstname, secondname, lastname, pesel, probability = generate_identity(gender, include_secondname)
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
         
-        st.markdown(f"<div class='identity-info'>**Firstname:** {firstname}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='identity-info'>Firstname: {firstname}</div>", unsafe_allow_html=True)
         if include_secondname and secondname:
-            st.markdown(f"<div class='identity-info'>**Secondname:** {secondname}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='identity-info'>**Lastname:** {lastname}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='identity-info'>**PESEL:** {pesel}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='identity-info'>Secondname: {secondname}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='identity-info'>Lastname: {lastname}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='identity-info'>PESEL: {pesel}</div>", unsafe_allow_html=True)
         # st.markdown(f"<div class='identity-info'>**Probability:** {probability}</div>", unsafe_allow_html=True)
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
