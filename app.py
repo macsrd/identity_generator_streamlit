@@ -45,33 +45,22 @@ def copy_to_clipboard(text):
 if st.button("Generate Identity"):
     try:
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
-        
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.markdown("**Firstname:**")
-        with col2:
-            if st.button(firstname, key="firstname"):
-                copy_to_clipboard(firstname)
-        
-        if include_secondname and secondname:
-            with col1:
-                st.markdown("**Secondname:**")
-            with col2:
-                if st.button(secondname, key="secondname"):
-                    copy_to_clipboard(secondname)
-        
-        with col1:
-            st.markdown("**Lastname:**")
-        with col2:
-            if st.button(lastname, key="lastname"):
-                copy_to_clipboard(lastname)
-        
-        with col1:
-            st.markdown("**PESEL:**")
-        with col2:
-            if st.button(pesel, key="pesel"):
-                copy_to_clipboard(pesel)
-        
+        st.session_state.identity = {
+            "firstname": firstname,
+            "secondname": secondname,
+            "lastname": lastname,
+            "pesel": pesel
+        }
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
+
+if "identity" in st.session_state:
+    for key, value in st.session_state.identity.items():
+        if key != "secondname" or (include_secondname and value):
+            col1, col2 = st.columns(2)
+            with col1:
+                st.markdown(f"**{key.capitalize()}:**")
+            with col2:
+                if st.button(value, key=f"copy_{key}"):
+                    pyperclip.copy(value)
+                    st.success(f"Copied to clipboard: {value}")
