@@ -1,3 +1,4 @@
 random_pesel
 openpyxl
 pyperclip
+st-copy-to-clipboard
