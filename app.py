@@ -22,11 +22,36 @@ if st.button("Generate Identity"):
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
 
+# Custom CSS to style the layout
+st.markdown("""
+<style>
+.identity-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.identity-key {
+    font-weight: bold;
+    margin-right: 10px;
+    min-width: 100px;
+}
+.stButton > button {
+    height: 30px;
+    padding: 0 10px;
+    line-height: 30px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Display identity information with value and copy button
 if "identity" in st.session_state:
     for key, value in st.session_state.identity:
-        col1, col2 = st.columns([3, 1])
-        col1.write(f"**{key}:** {value}")
-        col2.write(st_copy_to_clipboard(value, f"Copy {key}"))
+        st.markdown(f"""
+        <div class="identity-row">
+            <span class="identity-key">{key}:</span>
+            <span>{value}</span>
+        </div>
+        """, unsafe_allow_html=True)
+        st.write(st_copy_to_clipboard(value, value))
 
-st.info("Click on the 'Copy' button next to each value to copy it to your clipboard.")
+st.info("Click on the button next to each value to copy it to your clipboard.")
