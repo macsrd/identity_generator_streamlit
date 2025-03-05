@@ -36,9 +36,11 @@ if st.button("Generate Identity"):
 
 if "identity" in st.session_state:
     for key, value in st.session_state.identity:
-        container = st.container()
-        with container:
-            st.markdown(f"**{key}:**")
-            st_copy_to_clipboard(value, value)
+        st.markdown(f"""
+        <div style="margin-bottom: 0px; padding-bottom: 0px;">
+            <strong>{key}:</strong>
+        </div>
+        """, unsafe_allow_html=True)
+        st_copy_to_clipboard(value, value)
 
 st.info("Click on the values to copy them to your clipboard.")
