@@ -32,8 +32,7 @@ st.markdown("""
 }
 .identity-key {
     font-weight: bold;
-    margin-right: 10px;
-    min-width: 100px;
+    margin-right: 5px; /* Reduced margin */
 }
 .stButton > button {
     height: 30px;
@@ -46,7 +45,7 @@ st.markdown("""
 # Display identity information with key and copy button
 if "identity" in st.session_state:
     for key, value in st.session_state.identity:
-        col1, col2 = st.columns([1, 3])
+        col1, col2 = st.columns([1, 2]) # Adjusted column widths
         with col1:
             st.markdown(f'<div class="identity-key">{key}:</div>', unsafe_allow_html=True)
         with col2:
