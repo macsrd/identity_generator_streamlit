@@ -43,15 +43,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Display identity information with value and copy button
+# Display identity information with key and copy button
 if "identity" in st.session_state:
     for key, value in st.session_state.identity:
-        st.markdown(f"""
-        <div class="identity-row">
-            <span class="identity-key">{key}:</span>
-            <span>{value}</span>
-        </div>
-        """, unsafe_allow_html=True)
-        st.write(st_copy_to_clipboard(value, value))
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown(f'<div class="identity-key">{key}:</div>', unsafe_allow_html=True)
+        with col2:
+            st_copy_to_clipboard(value, value)
 
-st.info("Click on the button next to each value to copy it to your clipboard.")
+st.info("Click on the button next to each key to copy its value to your clipboard.")
