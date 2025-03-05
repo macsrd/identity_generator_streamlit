@@ -5,22 +5,27 @@ from st_copy_to_clipboard import st_copy_to_clipboard
 # Custom CSS to reduce spacing
 st.markdown("""
 <style>
-div.stMarkdown {
-    margin-bottom: 0rem;
-    padding-bottom: 0rem;
+.identity-row {
+    margin-bottom: 5px; /* Adjust this value to control spacing */
 }
-div.row-widget.stButton {
-    margin-top: 0rem;
-    padding-top: 0rem;
+.identity-label {
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.identity-copy {
+    margin-top: -10px; /* Negative margin to reduce space */
 }
 </style>
 """, unsafe_allow_html=True)
 
 st.title("Polish Identity Generator")
 
+# User selection
 gender = st.radio("Select Gender:", ["Male", "Female"])
 include_secondname = st.checkbox("Include Secondname")
 
+# Generate identity on button click
 if st.button("Generate Identity"):
     try:
         firstname, secondname, lastname, pesel = generate_identity(gender, include_secondname)
@@ -34,13 +39,15 @@ if st.button("Generate Identity"):
     except ValueError as e:
         st.error(f"Error generating identity: {e}")
 
+# Display identity information with reduced spacing
 if "identity" in st.session_state:
     for key, value in st.session_state.identity:
+        # Combine label and button into a single row with reduced spacing
         st.markdown(f"""
-        <div style="margin-bottom: 0px; padding-bottom: 0px;">
-            <strong>{key}:</strong>
+        <div class="identity-row">
+            <div class="identity-label">{key}:</div>
+            <div class="identity-copy">{st_copy_to_clipboard(value, value)}</div>
         </div>
         """, unsafe_allow_html=True)
-        st_copy_to_clipboard(value, value)
 
 st.info("Click on the values to copy them to your clipboard.")
